@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 # -*- coding: utf-8 -*-
 
 # ckstyle: Check document style with own style pattern
@@ -13,8 +12,8 @@ patterns = [
     [u"[ｦ-ﾝ]", "半角カタカナの利用は勧めません"],
     [u"[｡､]", "半角句読点の利用は勧めません"],
     [u"[．，]", "全角ピリオドとカンマの利用は勧めません"],
-    [u"[（）？！i]", "全角の（）？！の利用は勧めません、半角にしましょう"],
-    [u"[｢｣", "カギカッコ「」は全角をお勧めします"],
+    [u"[（）？！]", u"全角の（）？！の利用は勧めません、半角にしましょう"],
+    [u"[｢｣]", "カギカッコ「」は全角をお勧めします"],
     [u"コミュニティー", "コミュニティ"],
     [u"セキュリティー", "セキュリティ"],
     [u"カテゴリー", "カテゴリ"],
@@ -46,12 +45,17 @@ def chkline(lineno, line):
     import re
     line = line.decode("utf-8")
     find = 0
+    #print len(line), " ", line
+    if len(line) <= 1:
+        #print "*** null line found"
+        return find
     for p in patterns:
         result = re.findall(p[0], line)
         if result:
             find = find + 1
             print "{0:03d}:".format(lineno), line,
-            print p[1]
+            for s in result:
+                print s.encode("utf-8"), ":", p[1]
     return find
 
 
