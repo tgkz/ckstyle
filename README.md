@@ -2,7 +2,12 @@
 ckstyle is check Japanese document with own style pattern
 
 ## Sample result
-Here is sample run to check.
+Here is sample run. In this case, ckstyle itself is in myowntest.txt
+You can see the result by following format:
+Line# : source line 
+issued-pattern : message for the issue
+(another issue report if multiple issue found)
+
 ```
 $ ckstyle myowntest.txt
 009:     [u"[ａ-ｚＡ-Ｚ]", "全角アルファベットの利用は勧めません"],
