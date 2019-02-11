@@ -1,14 +1,14 @@
 # ckstyle
-ckstyle is check Japanese document with own style pattern
+ckstyle checks Japanese document with own style pattern
 
 ## Sample result
-Here is sample run. In this case, ckstyle itself is in myowntest.txt.
-You can see the result by following format:i
+以下は実例です。
+摘出した問題は以下の形式で表示されます：
 
 ```
-Line# : source line 
-issued-pattern : message for the issue
-(another issue report if multiple issue found)
+行番号# : ソース行
+問題のパターン：　問題のメッセージ
+　（同一行に複数の問題がある場合には連続して報告されます）
 ```
 
 ```
