@@ -17,8 +17,8 @@ patterns = [
     [u"[0-9]とおり", u"種類などを示す 通りはひらがなではなく漢字にしましょう"],
     [u"して下さい", u"動作を要求する ください はひらがなにしましょう"],
 
-    [u"事", "用語でない場合には ひらがなの こと を使いましょう"],
-    [u"為", "用語でない場合には ひらがなの ため を使いましょう"],
+    [u"[なのる]事[ぁ-ん]", "用語でない場合には ひらがなの こと を使いましょう"],
+    [u"[なのる]為[ぁ-ん]", "用語でない場合には ひらがなの ため を使いましょう"],
 
     [u"[０-９]本", "日本語の数字を表す場合は半角数字を使いましょう"],
     [u"[０-９]部", "日本語の数字を表す場合は半角数字を使いましょう"],
@@ -68,12 +68,13 @@ def chkline(lineno, line):
     if len(line) <= 1:
         #print "*** null line found"
         return find
-    print "{0:03d}:".format(lineno), line,
+    # print original line image
+    #print "{0:03d}:".format(lineno), line,
     for p in patterns:
         result = re.findall(p[0], line)
         if result:
             find = find + 1
-            #print "{0:03d}:".format(lineno), line,
+            print "{0:03d}:".format(lineno), line,
             for s in result:
                 print "**", s.encode("utf-8"), ":", p[1]
     return find
