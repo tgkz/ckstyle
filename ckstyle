@@ -37,12 +37,12 @@ patterns = [
     [u"[０-９][分]", "日本語の数字を表す場合は半角数字を使いましょう"],
     [u"[０-９][時]", "日本語の数字を表す場合は半角数字を使いましょう"],
 
-#    [u"[[ｳ-ﾎ](ﾟ|ﾞ)]", "半角カタカナの利用は勧めません"],
-#    [u"[ｦ-ﾝ]", "半角カタカナの利用は勧めません"],
-#    [u"[｡､]", "半角句読点の利用は勧めません"],
-#    [u"[．，]", "全角ピリオドとカンマの利用は勧めません"],
-#    [u"[（）？！]", u"全角の（）？！の利用は勧めません、半角にしましょう"],
-#    [u"[｢｣]", "カギカッコ「」は全角をお勧めします"],
+    #    [u"[[ｳ-ﾎ](ﾟ|ﾞ)]", "半角カタカナの利用は勧めません"],
+    #    [u"[ｦ-ﾝ]", "半角カタカナの利用は勧めません"],
+    #    [u"[｡､]", "半角句読点の利用は勧めません"],
+    #    [u"[．，]", "全角ピリオドとカンマの利用は勧めません"],
+    #    [u"[（）？！]", u"全角の（）？！の利用は勧めません、半角にしましょう"],
+    #    [u"[｢｣]", "カギカッコ「」は全角をお勧めします"],
 ]
 
 
@@ -50,9 +50,9 @@ def listpatterns():
     # Not used now but maybe useful for futre style improvements
     global patterns
     num = len(patterns)
-    print ("num patters:", num)
+    print("num patters:", num)
     for p in patterns:
-        print (p[0], " ", p[1])
+        print(p[0], " ", p[1])
 
 
 def chkline(lineno, line):
@@ -64,10 +64,10 @@ def chkline(lineno, line):
         result = re.findall(p[0], line)
         if result:
             find = find + 1
-            print ("{0:03d}:".format(lineno), line, end="")
+            print("{0:03d}:".format(lineno), line, end="")
             for s in result:
                 #print ("**", s.encode("utf-8"), ":", p[1])
-                print ("**", s, ":", p[1])
+                print("**", s, ":", p[1])
     return find
 
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     args = sys.argv
     if len(args) <= 1:
-        print ("Please specify filename")
+        print("Please specify filename")
         sys.exit(-10)
     lineno = 1
     findnum = 0
@@ -87,5 +87,5 @@ if __name__ == "__main__":
             lineno = lineno + 1
 
     if findnum > 0:
-        print (findnum, "issue found")
+        print(findnum, "issue found")
     exit(findnum)
